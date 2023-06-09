@@ -1,5 +1,4 @@
 ﻿using IOConsule;
-using Newtonsoft.Json;
 
 var currentDirectory = Directory.GetCurrentDirectory();
 var file = new FileInfo(Path.Combine(currentDirectory, "player.json"));
@@ -15,18 +14,5 @@ Player rahim = new Player()
     ip_address = "127.0.0.1"
 };
 
-//var obj = JsonConvert.SerializeObject(rahim, Formatting.None);
-//Console.WriteLine(obj);
-
-using (var streamWriter = new StreamWriter(file.FullName))
-{
-    var obj = JsonConvert.SerializeObject(rahim, Formatting.Indented);
-    Console.WriteLine(obj.ToString());
-    streamWriter.WriteLine(obj);
-}
-
-using (var streamReader = new StreamReader(file.FullName))
-{
-    var player = JsonConvert.DeserializeObject<Player>(streamReader.ReadToEnd());
-    Console.WriteLine(player);
-}
+JsonConvertDemo.SerializeFromObject(rahim, file.FullName);
+JsonConvertDemo.DeserializeFromObject(rahim, file.FullName);

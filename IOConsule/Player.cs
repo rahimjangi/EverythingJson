@@ -23,7 +23,7 @@ public class Player
         email: {email},
         gender: {gender},
         ip_address: {ip_address},
-        birth_date: {birth_date.ToString("yyyy-MM-dd")}
+        birth_date: {birth_date}
     ";
     }
 
